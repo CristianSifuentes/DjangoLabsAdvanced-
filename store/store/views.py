@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 def index(request):
     return render(request,'index.html', {
@@ -37,8 +38,11 @@ def login_view(request):
         if user:
             login(request, user)
             print('user authenticated')
+            messages.success(request, 'Welcome {}'.format(user.username))
             return redirect('index')
         else:
             print('user no authenticated')
+            messages.error(request, 'User invalid')
+
 
     return render(request, 'users/login.html', {})
