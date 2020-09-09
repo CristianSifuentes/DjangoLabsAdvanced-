@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 def index(request):
@@ -46,3 +46,8 @@ def login_view(request):
 
 
     return render(request, 'users/login.html', {})
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Session closed successfully')
+    return redirect('login_view')
