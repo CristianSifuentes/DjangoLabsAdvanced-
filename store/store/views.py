@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 
 def index(request):
     return render(request,'index.html', {
@@ -24,5 +25,20 @@ def index(request):
         ]
     })
 
-def login(request):
+def login_view(request):
+    print(request.method)
+    if request.method == 'POST':
+        username = request.POST.get('username') #diccionary
+        password = request.POST.get('password')
+        print(username)
+        print(password)
+
+        user = authenticate(username=username, password=password) #none
+        if user:
+            login(request, user)
+            print('user authenticated')
+            return redirect('index')
+        else:
+            print('user no authenticated')
+
     return render(request, 'users/login.html', {})
