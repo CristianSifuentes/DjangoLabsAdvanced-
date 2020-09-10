@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .forms import RegisterForm
 
 def index(request):
     return render(request,'index.html', {
@@ -51,3 +52,9 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'Session closed successfully')
     return redirect('login_view')
+
+def register_view(request):
+    form = RegisterForm()
+    return render(request,'users/register.html', {
+          'form': form
+    })
