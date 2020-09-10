@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegisterForm
+from django.contrib.auth.models import User
 
 def index(request):
     return render(request,'index.html', {
@@ -54,7 +55,19 @@ def logout_view(request):
     return redirect('login_view')
 
 def register_view(request):
-    form = RegisterForm()
+    form = RegisterForm(request.POST or None)
+    
+    if request.method == 'POST' and form.is_valid():
+         username = form.cleaned_data.get('username')
+         email = form.cleaned_data.get('email')
+         password = form.cleaned_data.get('password')  
+
+         user = User.objects.create_user(username, email, password) 
+         if user:
+             login(request, user)
+             messages.success(request, 'User created successfully')
+             return redirect('index')
+
     return render(request,'users/register.html', {
           'form': form
     })
