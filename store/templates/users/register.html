@@ -15,7 +15,7 @@
 
               <form method="post">
                 {% csrf_token %}
-                <div class="form-group">
+                <!-- <div class="form-group">
                     {{ form.username.label_tag }}
                     {{ form.username }}
                 </div>
@@ -28,7 +28,19 @@
                 <div class="form-group">
                     {{ form.password.label_tag }}
                     {{ form.password }}
-                </div> 
+                </div>  -->
+
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+
+                        {% if field.errors %}
+                            {{ field.errors}}
+                        {% endif %}
+                        
+                    </div>
+                {% endfor %}
 
                 <button type="submit" class="btn btn-primary">login</button>
             </form>
