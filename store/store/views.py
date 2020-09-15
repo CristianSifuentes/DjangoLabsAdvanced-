@@ -29,7 +29,10 @@ def index(request):
     })
 
 def login_view(request):
-    print(request.method)
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    # print(request.method)
     if request.method == 'POST':
         username = request.POST.get('username') #diccionary
         password = request.POST.get('password')
@@ -55,6 +58,9 @@ def logout_view(request):
     return redirect('login_view')
 
 def register_view(request):
+    if request.user.is_authenticated:
+        return redirect('login_view')
+
     form = RegisterForm(request.POST or None)
 
     if request.method == 'POST' and form.is_valid():
