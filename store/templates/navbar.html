@@ -1,3 +1,7 @@
+{% url 'login_view' as login_view %} 
+{% url 'register_view' as register_view %} 
+{% url 'logout_view' as logout_view %} 
+
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <a href="#" class="navbar-brand">
         Store
@@ -8,22 +12,22 @@
 
     <div id="navb"  class="navbar-collapse collapse hide">
         <ul class="nav navbar-nav ml-auto">
-            <li class="navbar-item">
-                <a href="#" class="nav-link">
+            <li class="navbar-item {% if request.path == login_view %} active {%  endif %}">
+                <a href="{{ login_view }}" class="nav-link">
                     <span class="fas fa-user">
                     </span>
                     Login</a>
             </li>
 
-            <li class="navbar-item">
-                <a href="#" class="nav-link">
+            <li class="navbar-item {% if request.path == register_view %} active {%  endif %}">
+                <a href="{% url 'register_view' %}" class="nav-link">
                     <span class="fas fa-cash-register">
                     </span>
                     Register</a>
             </li>
 
-            <li class="navbar-item">
-                <a href="#" class="nav-link">
+            <li class="navbar-item {% if request.path == logout_view %} active {%  endif %}">
+                <a href="{% url 'logout_view' %}" class="nav-link">
                     <span class="fas fa-sign-in-alt">
                     </span>
                     Logout</a>
