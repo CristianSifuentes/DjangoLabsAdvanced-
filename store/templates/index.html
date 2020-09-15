@@ -9,9 +9,10 @@
                     <ul class="list-group">
                         <li class="list-group-item">
                             {{ product.title }}
+                           
                             <span>
-                                {% if product.stock %}
-                                     <span class="text-success">Enabled</span>
+                                {% if product.price %}
+                                     <span class="text-success">{{ product.price }}</span>
                                 {% else %}
                                      <span class="text-danger">Not enabled</span>
                                 {% endif %}
