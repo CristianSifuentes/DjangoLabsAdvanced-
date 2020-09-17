@@ -9,6 +9,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0) #123456.78
     slug = models.SlugField(null=False, blank=False,unique=True)
+    image = models.ImageField(upload_to='products/', null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     
     #sobre escribe el metodo save y se auto-crea un slug
@@ -25,7 +26,7 @@ def set_slug(sender, instance, *args, **kwargs):#callback
         
         while Product.objects.filter(slug=slug).exists():
             slug = slugify(
-                '{}-{}'.format(instance.title, str(uuid.uuid4()) )
+                '{}-{}'.format(instance.title, str(uuid.uuid4())[:8] )
             )
 
         instance.slug = slug

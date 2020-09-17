@@ -2,6 +2,12 @@
 
 {% block content %}
 
+  <div class="col-3">
+       
+      {% if product.image  %}
+         <img src="{{ product.image.url  }}" alt="Product image" width="200" height="200"/>
+      {% endif %}
+  </div>
   <div class="col">
       <div class="h1">
           {{ product.title }}
