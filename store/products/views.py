@@ -12,7 +12,7 @@ class ProductListView(ListView):
         context = super().get_context_data(**kwargs)
         context['message'] = 'Product list'
         context['products'] = context['product_list']
-        print(context)
+        # print(context['products'])
         return context
 
 class ProductDetailView(DetailView):#id -> pk
@@ -21,5 +21,23 @@ class ProductDetailView(DetailView):#id -> pk
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(context)
+        # print(context)
         return context
+
+
+class ProductSearchListView(ListView):
+    template_name = 'products/search.html'
+
+    def get_queryset(self):
+        return Product.objects.filter(title__icontains=self.query())
+    
+    def query(self):
+        return self.request.GET.get('q')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.query()
+        context['count'] = context['product_list'].count()
+        # print(context['products'])
+        return context
+

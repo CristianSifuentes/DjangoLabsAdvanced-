@@ -5,40 +5,10 @@
 
         <div class="col">
                 <h4 class="text-center">{{ message }}</h4>
-                <div class="row">
-                    {% for product in products %}
-                    <div class="col-3 mt-5">
-                        <div class="card h-100">
-                            {% if product.image %}
-                              <img src="{{ product.image.url  }}" alt="Product image" height="300" >
-                            {% endif %}
 
-                            <div class="card-body">
-                                <h5 class="card-title">{{ product.title  }}</h5>
-                                <p class="card-text">{{ product.description  }}</p>
-                                <a href="#" class="btn btn-primary">Watch..</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- <ul class="list-group">
-                        <li class="list-group-item">
-                            {{ product.title }}
-                           
-                            <span>
-                                {% if product.price %}
-                                     <span class="text-success">{{ product.price }}</span>
-                                {% else %}
-                                     <span class="text-danger">Not enabled</span>
-                                {% endif %}
-                            </span>
-                        </li>                       
-                    </ul>
+                {% include 'products/snippets/search.html' %}
 
-                    <img src="{% static 'images/icons8-heart-90.png' %}" alt="image"/> -->
-                {% endfor %}
-                </div> 
-
+                {% include 'products/snippets/list.html' %}
 
         </div>
 
