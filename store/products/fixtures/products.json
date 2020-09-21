@@ -1,0 +1,50 @@
+[
+{
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+        "title": "tenis para hombre",
+        "description": "tenis para hombre",
+        "price": "40.00",
+        "slug": "tenis-para-hombre",
+        "image": "products/FOTO.jpg",
+        "created_at": "2020-09-17T18:00:59.203Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+        "title": "tenis-para-hombre",
+        "description": "tenis-para-hombre",
+        "price": "200.00",
+        "slug": "tenis-para-hombre-8d4ceddc",
+        "image": "products/remottt.jpg",
+        "created_at": "2020-09-17T18:09:58.918Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 9,
+    "fields": {
+        "title": "tenis para mujer",
+        "description": "tenis para mujer",
+        "price": "100.00",
+        "slug": "tenis-para-mujer",
+        "image": "products/EehkYCwWoAI7zoB.png",
+        "created_at": "2020-09-17T21:47:58.614Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+        "title": "playera para hombre",
+        "description": "playera para hombre",
+        "price": "30.00",
+        "slug": "playera-para-hombre",
+        "image": "products/shlly.jpg",
+        "created_at": "2020-09-21T20:29:42.584Z"
+    }
+}
+]
